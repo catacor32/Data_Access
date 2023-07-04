@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE catalog [
-<!ELEMENT catalog (articol*)>
-<!ELEMENT articol (nume,categorie,descriere?)>
-<!ELEMENT nume (#PCDATA)>
-<!ELEMENT categorie (#PCDATA)>
-<!ELEMENT descriere (#PCDATA)>
-<!ATTLIST articol id CDATA #REQUIRED>
-]>
-<catalog>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="schema.xsd">>
 	<articol id="1">
 		<nume>Coca Cola</nume>
-		<categorie>Bauturi</categorie>
+		<categorie>Băuturi</categorie>
 		<descriere><![CDATA[
-		Descrierea primului articol în format <b>HTML</b>
+		Descrierea primului articol
+		în format <b>HTML</b>
 		]]></descriere>
 	</articol>
 	<articol id="2">
-		<nume>Ciocolata</nume>
+		<nume>Ciocolată</nume>
 		<categorie>Alimente</categorie>
 		<descriere><![CDATA[
 		Descrierea celui de-al doilea articol
 		în format <b>HTML</b>
 		]]></descriere>
 	</articol>
-	<articol id="3">
+		<articol id="3">
 		<nume>HP Pavilion</nume>
 		<categorie>Laptopuri</categorie>
 		<descriere><![CDATA[
