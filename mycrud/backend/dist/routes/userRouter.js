@@ -62,16 +62,15 @@ userRouter.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function*
 }));
 userRouter.post("/", jsonParser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(req.body);
-    console.log(req.files);
     const newUser = req.body;
     let fileToUpload;
     let uploadPath;
-    fileToUpload = req.files.poza; //Object is possibly 'null' or 'undefined'.
+    fileToUpload = req.files.poza; //Object is possibly 'null' or 'undefined'. 
     const newFileName = `${Date.now()}-_${fileToUpload.name}`;
     uploadPath = path_1.default.join(__dirname, '..', '/uploads/', newFileName);
     console.log(uploadPath);
     fileToUpload.mv(uploadPath);
-    newUser['poza'] = newFileName;
+    newUser["poza"] = newFileName;
     userModel.create(newUser, (err, userId) => {
         if (err) {
             return res.status(500).json({ "message": err.message });

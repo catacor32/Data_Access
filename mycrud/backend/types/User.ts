@@ -1,19 +1,22 @@
- interface BasicUser {
+import fileUpload from "express-fileupload";
+
+interface BasicUser {
     id: number,
-}
- interface User extends BasicUser {
+  }
+interface User extends BasicUser {
   nume: string,
   prenume: string,
   datanastere:Date, //string
   email:string,
   telefon: string,
-  poza?:string,
+  poza?: string,
   dataadaugare?:Date,
   actiune?:string
 }
- interface UserWithDetails extends BasicUser, User{
+interface UserWithDetails extends BasicUser, User{
   userId: number,
   user: User,
   
 }
-export {BasicUser ,User ,UserWithDetails}
+export {BasicUser, User, UserWithDetails};
+

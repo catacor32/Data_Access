@@ -1,9 +1,10 @@
 import express, {Request, Response} from "express";
-import fileUpload, { UploadedFile } from 'express-fileupload';
+import fileUpload, {UploadedFile} from "express-fileupload";
 import * as bodyParser from "body-parser";
 import * as userModel from "../models/user";
 import {User} from "../types/User";
 import path from "path";
+
 const userRouter = express.Router();
 var jsonParser = bodyParser.json()
 userRouter.get("/", async (req: Request, res: Response) => {
@@ -29,18 +30,17 @@ userRouter.get("/:id", async (req: Request, res: Response) => {
 
 userRouter.post("/",jsonParser, async (req: Request, res: Response) => {
   console.log(req.body);
-  console.log(req.files);
   const newUser: User = req.body;
 
   let fileToUpload:any;
   let uploadPath;
-  fileToUpload = req.files!.poza as UploadedFile; //Object is possibly 'null' or 'undefined'.
+  fileToUpload = req.files!.poza as UploadedFile; //Object is possibly 'null' or 'undefined'. 
   const newFileName = `${Date.now()}-_${fileToUpload.name}`;
   uploadPath = path.join(__dirname, '..', '/uploads/', newFileName);
-  
+
   console.log(uploadPath);
   fileToUpload.mv(uploadPath);
-  newUser['poza'] = newFileName;
+  newUser ["poza"] = newFileName;
 
   userModel.create(newUser, (err: Error, userId: number) => {
     if (err) {

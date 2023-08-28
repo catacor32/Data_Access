@@ -40,10 +40,10 @@ $(document).ready(function ($) {
         contentType: 'application/json'
 
     }).done(function (data) {
-        console.log(data);
+        //console.log(data);
         $('#example').dataTable({
             "paging": true,
-            "pageLength": 3,
+            "pageLength": 5,
             processing: true,
             serverSide: false,
             "data": data.data,
@@ -53,15 +53,14 @@ $(document).ready(function ($) {
                 { "data": "prenume" },
                 { "data": "email" },
                 { "data": "telefon" },
-                { 
+                {
                     "data": "poza",
-                    render:function (myphoto) {
-                        return '<img style="max-width:100px" src="../backend/dist/uploads/' + myphoto + '" />'; 
-                    },
+                    render:function (photo) {
+                    return '<img style="max-width:100px" src="../backend/dist/uploads/' +photo+ '" />'; }
                 },
                 {
                     "data": "datanastere",
-                    render: $.fn.dataTable.render.moment('YYYY-MM-DDTHH:mm:ss.SSSSZ','DD-MM-YYYY' )
+                    render: $.fn.dataTable.render.moment('YYYY-MM-DDTHH:mm:ss.SSSSZ','YYYY-MM-DD' )
     
                 },
                 {
@@ -136,9 +135,9 @@ $(document).ready(function ($) {
     $('#userInserUpdateForm').submit(function () {
         // ajax
         var idValue = document.getElementById("id").value;
-       // var form = document.getElementById('userInserUpdateForm');
+
         var form = $('#userInserUpdateForm');
-       // alert(idValue == '');
+        // alert(idValue == '');
         console.log('am id', idValue);
         let method = 'POST';
         let urlReq = "http://localhost:3002/users/"
@@ -146,10 +145,11 @@ $(document).ready(function ($) {
             method = 'PUT';
             urlReq = "http://localhost:3002/users/" + idValue;
         }
-       
-       // alert(method);
-       // alert(urlReq);
+
+        // alert(method);
+        // alert(urlReq);
         var formData = new FormData(form[0]);
+
         $.ajax({
             
             type: method,
